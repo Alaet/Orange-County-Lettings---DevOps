@@ -11,4 +11,6 @@ RUN groupadd -r myuser \
     && apt-get autoclean \
     && rm -r -f /var/lib/apt/lists/*
 
+COPY . .
+
 USER myuser
