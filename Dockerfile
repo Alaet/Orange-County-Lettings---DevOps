@@ -17,4 +17,5 @@ RUN python3 -m venv venv \
 
 
 USER myuser
-CMD ["cd", "venv/bin"]
+ENTRYPOINT ["echo", "cd "]
+CMD ["venv/bin"]
