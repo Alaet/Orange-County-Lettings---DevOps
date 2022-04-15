@@ -12,6 +12,8 @@ RUN groupadd -r myuser \
     && apt-get autoremove \
     && apt-get autoclean \
     && rm -r -f /var/lib/apt/lists/* \
-    && python3 -m venv venv
+    && python3 -m venv venv \
+    && cd venv/Scripts && . ./activate && cd ../.. \
+    && pip3 install -r requirements.txt
 
 USER myuser
