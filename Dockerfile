@@ -2,7 +2,7 @@ FROM cimg/python:3.10.4
 
 USER root
 
-WORKDIR /app
+WORKDIR .
 COPY requirements.txt /app
 
 
