@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import letting, index
+from .views import index, letting
 
 urlpatterns = [
     path('', index, name='lettings_index'),
