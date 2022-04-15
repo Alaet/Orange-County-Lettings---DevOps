@@ -15,5 +15,6 @@ RUN groupadd -r myuser \
     && python3 -m venv venv \
     && cd venv/bin && . ./activate && cd ../.. \
     && pip3 install -r requirements.txt
-
+ENV PORT=8000
+EXPOSE 8000
 USER myuser
