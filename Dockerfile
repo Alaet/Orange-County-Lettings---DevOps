@@ -11,10 +11,8 @@ EXPOSE 8000
 RUN python3 -m venv venv \
     && cd venv/bin && . ./activate && cd ../.. \
     && pip3 install -r requirements.txt \
-    && python3 manage.py runserver 0.0.0.0:$PORT \
     && groupadd -r myuser \
     && useradd -r -g myuser myuser \
-    && rm -r -f /var/lib/apt/lists/* \
+    && rm -r -f /var/lib/apt/lists/*
 
 USER myuser
-
