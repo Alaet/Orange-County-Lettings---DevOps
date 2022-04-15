@@ -15,10 +15,10 @@ RUN python3 -m venv venv \
     && useradd -r -g myuser myuser \
     && rm -r -f /var/lib/apt/lists/*
 
+USER myuser
+
 CMD cd app
 CMD cd venv/bin
 CMD . ./activate
 CMD cd ../..
 CMD python3 manage.py runserver 0.0.0.0:$PORT
-
-USER myuser
