@@ -15,9 +15,6 @@ RUN pip3 install -r requirements.txt \
 
 COPY . /app
 CMD ["cd", "app"]
-CMD ["cd", "venv/bin"]
-CMD [".", "./activate"]
-CMD ["cd", "../.."]
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:$PORT"]
+CMD python3 manage.py runserver 0.0.0.0:$PORT
 
 USER myuser
