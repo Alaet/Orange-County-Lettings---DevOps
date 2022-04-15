@@ -5,7 +5,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV PORT=8000
-COPY . /app
+COPY requirements.txt /app
 EXPOSE 8000
 
 RUN python3 -m venv venv \
@@ -15,6 +15,7 @@ RUN python3 -m venv venv \
     && useradd -r -g myuser myuser \
     && rm -r -f /var/lib/apt/lists/*
 
+COPY . /app
 CMD ["cd", "app"]
 CMD ["cd", "venv/bin"]
 CMD [".", "./activate"]
