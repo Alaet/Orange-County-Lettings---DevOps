@@ -9,8 +9,6 @@ RUN python3 -m venv venv \
     && pip3 install -r requirements.txt \
     && groupadd -r myuser \
     && useradd -r -g myuser myuser \
-    && apt-get autoremove \
-    && apt-get autoclean \
     && rm -r -f /var/lib/apt/lists/* \
 
 ENV PYTHONDONTWRITEBYTECODE 1
