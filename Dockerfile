@@ -2,7 +2,9 @@ FROM cimg/python:3.10.4
 
 USER root
 
-COPY . .
+WORKDIR /app
+COPY requirements.txt /app
+
 
 RUN python3 -m venv venv \
     && cd venv/bin && . ./activate && cd ../.. \
@@ -14,7 +16,7 @@ RUN python3 -m venv venv \
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV PORT=8000
-
+COPY . .
 EXPOSE 8000
 CMD ["cd", "venv/bin", "./activate"]
 CMD ["cd", "../.."]
