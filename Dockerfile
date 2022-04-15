@@ -11,6 +11,7 @@ RUN groupadd -r myuser \
     && apt-get autoclean \
     && rm -r -f /var/lib/apt/lists/*
 
+
 COPY . .
 
 CMD ["python3", "-m", "venv", "venv"]
