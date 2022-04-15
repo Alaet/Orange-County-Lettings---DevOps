@@ -16,5 +16,8 @@ RUN python3 -m venv venv \
     && rm -r -f /var/lib/apt/lists/*
 
 CMD ["cd", "venv/bin"]
+CMD [".", "./activate"]
+CMD ["cd", "../.."]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:$PORT"]
 
 USER myuser
