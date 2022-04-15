@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt \
     && rm -r -f /var/lib/apt/lists/*
 
 COPY . /app
-CMD ["cd", "app"]
-CMD python3 manage.py runserver 0.0.0.0:$PORT
+
+CMD ["python3 manage.py runserver 0.0.0.0:$PORT"]
 
 USER myuser
