@@ -56,4 +56,4 @@ workflows:
           docker-password: DOCKER_PASSWORD
           extra_build_args: --expose=8000
           image: alaet/testimg
-          tag: $CIRCLE_SHA1
+          tag: $CIRCLE_SHA1 latest
