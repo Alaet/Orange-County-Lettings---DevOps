@@ -13,4 +13,7 @@ RUN groupadd -r myuser \
 
 COPY . .
 
+ENTRYPOINT ["echo", "python3 "]
+CMD ["-m venv venv"]
+
 USER myuser
