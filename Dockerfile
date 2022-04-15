@@ -3,7 +3,7 @@ FROM cimg/python:3.10.4
 USER root
 
 WORKDIR .
-COPY requirements.txt /app
+COPY requirements.txt .
 
 
 RUN python3 -m venv venv \
