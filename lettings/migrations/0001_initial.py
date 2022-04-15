@@ -3,14 +3,14 @@
 import django.core.validators
 from django.db import migrations, models
 import django.db.models.deletion
-from typing import List
+from typing import Type
 
 
 class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = List[str] = [
+    dependencies = Type[str] = [
     ]
 
     operations = [
