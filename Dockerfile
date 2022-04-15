@@ -18,7 +18,9 @@ ENV PYTHONUNBUFFERED 1
 ENV PORT=8000
 
 EXPOSE 8000
-
+CMD ["cd", "venv/bin", "./activate"]
+CMD ["cd", "../.."]
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:$PORT"]
 
 USER myuser
+
