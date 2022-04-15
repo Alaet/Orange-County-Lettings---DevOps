@@ -15,4 +15,6 @@ RUN python3 -m venv venv \
     && useradd -r -g myuser myuser \
     && rm -r -f /var/lib/apt/lists/*
 
+
 USER myuser
+CMD ["cd", "venv/bin"]
