@@ -54,6 +54,5 @@ workflows:
             # - github-super-linter/lint
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
-          extra_build_args: -t latest
           image: alaet/testimg
-          tag: $CIRCLE_SHA1
+          tag: $CIRCLE_SHA1,latest
