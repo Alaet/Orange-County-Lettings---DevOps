@@ -15,7 +15,6 @@ RUN python3 -m venv venv \
     && useradd -r -g myuser myuser \
     && rm -r -f /var/lib/apt/lists/*
 
+CMD ["cd", "venv/bin"]
 
 USER myuser
-ENTRYPOINT ["echo", "cd "]
-CMD ["venv/bin"]
