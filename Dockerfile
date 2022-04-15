@@ -4,6 +4,8 @@ USER root
 
 COPY . .
 
+ENV PORT=8000
+
 RUN groupadd -r myuser \
     && useradd -r -g myuser myuser \
     && pip3 install --no-cache-dir \
@@ -15,6 +17,9 @@ RUN groupadd -r myuser \
     && python3 -m venv venv \
     && cd venv/bin && . ./activate && cd ../.. \
     && pip3 install -r requirements.txt
-ENV PORT=8000
+
 EXPOSE 8000
+
+CMD python manage.py runserver 0.0.0.0:$PORT
+
 USER myuser
