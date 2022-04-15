@@ -8,9 +8,7 @@ ENV PORT=8000
 COPY requirements.txt /app
 EXPOSE 8000
 
-RUN python3 -m venv venv \
-    && cd venv/bin && . ./activate && cd ../.. \
-    && pip3 install -r requirements.txt \
+RUN pip3 install -r requirements.txt \
     && groupadd -r myuser \
     && useradd -r -g myuser myuser \
     && rm -r -f /var/lib/apt/lists/*
