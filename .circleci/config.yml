@@ -15,17 +15,13 @@ jobs:
       - heroku/install
       - heroku/check-authentication
       - docker/install-docker
-      - docker/install-docker-credential-helper:
-          helper-name: pass 
       - docker/check
       - docker/build:
-          registry: registry.heroku.com/${HEROKU_APP_NAME}/web
           image: alaet/oc-lettings-om
-          tag: $CIRCLE_SHA1,latest
+          tag: $CIRCLE_SHA1,latest,registry.heroku.com/${HEROKU_APP_NAME}/web
       - docker/push:
-          registry: registry.heroku.com/${HEROKU_APP_NAME}/web
           image: alaet/oc-lettings-om
-          tag: $CIRCLE_SHA1,latest
+          tag: $CIRCLE_SHA1,latest,registry.heroku.com/${HEROKU_APP_NAME}/web
   pull-and-test:
     docker:
       - image: cimg/python:3.10.4
@@ -40,7 +36,7 @@ jobs:
       - heroku/install
       - docker/install-docker
       - docker/pull:
-          images: alaet/oc-lettings-om:latest
+          images: alaet/oc-lettings-om:registry.heroku.com/${HEROKU_APP_NAME}/web
       - heroku/push-docker-image:
           process-types: web 
           api-key: HEROKU_API_KEY
