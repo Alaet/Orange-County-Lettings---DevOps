@@ -40,6 +40,9 @@ jobs:
       - heroku/push-docker-image:
           process-types: web 
           api-key: HEROKU_API_KEY
+      - heroku/release-docker-image:
+          process-types: web 
+          api-key: HEROKU_API_KEY
 workflows:
   test-lint-build-deploy:
     jobs:
