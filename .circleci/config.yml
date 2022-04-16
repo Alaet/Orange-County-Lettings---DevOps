@@ -42,9 +42,6 @@ jobs:
       - run : heroku container:login
       - run: docker tag alaet/oc-lettings-om:${CIRCLE_SHA1} registry.heroku.com/${HEROKU_APP_NAME}/web
       - run: docker push registry.heroku.com/${HEROKU_APP_NAME}/web
-      - heroku/push-docker-image:
-          process-types: web 
-          api-key: HEROKU_API_KEY
       - heroku/release-docker-image:
           process-types: web 
           api-key: HEROKU_API_KEY
