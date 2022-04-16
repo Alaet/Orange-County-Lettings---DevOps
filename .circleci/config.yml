@@ -36,10 +36,10 @@ jobs:
       - heroku/install
       - docker/install-docker
       - docker/pull:
-          images: alaet/oc-lettings-om:latest
+          images: alaet/oc-lettings-om:${CIRCLE_SHA1}
       - run:
           name: tag image
-          command: docker tag alaet/oc-lettings-om:latest registry.heroku.com/${HEROKU_APP_NAME} && docker push registry.heroku.com/${HEROKU_APP_NAME}/web
+          command: docker tag alaet/oc-lettings-om:${CIRCLE_SHA1} registry.heroku.com/${HEROKU_APP_NAME} && docker push registry.heroku.com/${HEROKU_APP_NAME}/web
       - heroku/push-docker-image:
           process-types: web 
           api-key: HEROKU_API_KEY
