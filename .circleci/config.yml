@@ -49,11 +49,12 @@ workflows:
   test-lint-build-deploy: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - install-docker
       - build-and-test
       - github-super-linter/lint:
           requires:
             - build-and-test 
+      - install-docker
+      - install-heroku
       - docker/publish:
           requires:
             - github-super-linter/lint
@@ -61,7 +62,6 @@ workflows:
           docker-password: DOCKER_PASSWORD
           image: alaet/testimg
           tag: $CIRCLE_SHA1,latest
-      - install-heroku
       - push-docker-image:
           requires:
               - install-docker
