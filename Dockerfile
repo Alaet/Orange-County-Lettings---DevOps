@@ -11,7 +11,7 @@ COPY requirements.txt /app
 EXPOSE 8000
 
 RUN set -o pipefail \
-    && curl https://cli-assets.heroku.com/install.sh | sh \
+    && curl https://cli-assets.heroku.com/install-ubuntu.sh | sh \
     && pip3 install --no-cache-dir -r requirements.txt \
     && groupadd -r myuser \
     && useradd -r -g myuser myuser \
