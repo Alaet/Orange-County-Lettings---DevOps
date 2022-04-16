@@ -30,13 +30,13 @@ jobs:
           docker-username: DOCKER_LOGIN 
           docker-password: DOCKER_PASSWORD
       - docker/build:
-          image: alaet/testimg
+          image: alaet/oc-lettings-om/testimg
           tag: $CIRCLE_SHA1,latest
       - docker/push:
-          image: alaet/testimg
+          image: alaet/oc-lettings-om/testimg
           tag: $CIRCLE_SHA1,latest
       - docker/pull:
-          images: alaet/testimg:latest
+          images: alaet/oc-lettings-om/testimg:latest
       - heroku/push-docker-image:
           recursive: true 
           api-key: HEROKU_API_KEY
