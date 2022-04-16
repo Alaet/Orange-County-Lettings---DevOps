@@ -30,16 +30,16 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
-      - heroku/install
-      - docker/install-docker-tools
-      - docker/pull:
-          images: alaet/testimg
-      - docker/check:
-          docker-username: DOCKER_LOGIN 
-          docker-password: DOCKER_PASSWORD 
       - run:
           name: Run tests
           command: pytest
+      - heroku/install
+      - docker/install-docker-tools
+      - docker/check:
+          docker-username: DOCKER_LOGIN 
+          docker-password: DOCKER_PASSWORD 
+      - docker/pull:
+          images: alaet/testimg
       - heroku/push-docker-image:
          api-key: HEROKU_API_KEY
 # Invoke jobs via workflows
