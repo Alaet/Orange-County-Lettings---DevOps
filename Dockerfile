@@ -8,8 +8,7 @@ ENV PORT=8000
 COPY requirements.txt /app
 EXPOSE 8000
 
-RUN docker login \
-    && pip3 install --no-cache-dir -r requirements.txt \
+RUN pip3 install --no-cache-dir -r requirements.txt \
     && groupadd -r myuser \
     && useradd -r -g myuser myuser \
     && rm -r -f /var/lib/apt/lists/*
