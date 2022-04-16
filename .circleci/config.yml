@@ -17,8 +17,7 @@ jobs:
       - docker/install-docker
       - docker/install-docker-credential-helper:
           helper-name: pass 
-      - docker/check:
-          registry: registry.heroku.com/${HEROKU_APP_NAME}/web
+      - docker/check
       - docker/build:
           registry: registry.heroku.com/${HEROKU_APP_NAME}/web
           image: alaet/oc-lettings-om
