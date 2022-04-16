@@ -1,2 +1,8 @@
 [run]
-omit = lettings_site/migrations/*,lettings/tests/*,lettings/migrations/*, profiles/migrations/*
+omit = lettings_site/migrations/*,lettings_site/apps.py,lettings_site/admin.py, \
+        lettings_site/models.py,lettings_site/urls.py,lettings_site/__init__.py, \
+        lettings/tests/*, lettings_site/tests/*, profiles/tests/* \
+        profiles/migrations/*,profiles/apps.py,profiles/admin.py, \
+        profiles/models.py,profiles/urls.py,profiles/__init__.py, \
+        lettings/apps.py,lettings/migrations/*,lettings/admin.py, \
+        lettings/models.py, lettings/urls.py, lettings/__init__.py
