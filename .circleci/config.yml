@@ -37,7 +37,7 @@ jobs:
       - docker/install-docker
       - docker/pull:
           images: alaet/oc-lettings-om:${CIRCLE_SHA1}
-      - run : echo $DOCKER_HUB_PASSWORD | docker login -u ${DOCKER_HUB_USERNAME} --password-stdin
+      - run : echo $DOCKER_PASSWORD | docker login -u ${DOCKER_LOGIN} --password-stdin
       - run: docker tag alaet/oc-lettings-om:${CIRCLE_SHA1} registry.heroku.com/${HEROKU_APP_NAME}/web
       - run: docker push registry.heroku.com/${HEROKU_APP_NAME}/web
       - heroku/push-docker-image:
