@@ -23,6 +23,7 @@ jobs:
     steps:
       - heroku/push-docker-image:
          api-key: HEROKU_API_KEY
+         recursive: true
   build-and-test:
     docker:
       - image: cimg/python:3.10.4
