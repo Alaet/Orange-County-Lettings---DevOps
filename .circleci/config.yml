@@ -9,7 +9,8 @@ jobs:
   build-push:
     docker:
       - image: cimg/python:3.10.4
-    resource_class: xlarge
+    resource_class: large
+    parallelism: 4
     steps:
       - checkout
       - setup_remote_docker
@@ -26,7 +27,8 @@ jobs:
   pull-and-test:
     docker:
       - image: cimg/python:3.10.4
-    resource_class: xlarge
+    resource_class: large
+    parallelism: 4
     steps:
       - checkout
       - setup_remote_docker
@@ -39,7 +41,7 @@ jobs:
       - docker/install-docker
       - docker/pull:
           images: alaet/oc-lettings-om:${CIRCLE_SHA1}
-      - run : echo $DOCKER_PASSWORD | docker login -u ${DOCKER_LOGIN} --password-stdin
+      - run : heroku container:login
       - run: docker tag alaet/oc-lettings-om:${CIRCLE_SHA1} registry.heroku.com/${HEROKU_APP_NAME}/web
       - run: docker push registry.heroku.com/${HEROKU_APP_NAME}/web
       - heroku/push-docker-image:
