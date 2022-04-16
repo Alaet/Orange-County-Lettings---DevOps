@@ -67,3 +67,4 @@ workflows:
       - heroku/push-docker-image:
           requires:
               - install-heroku
+              - github-super-linter/lint
