@@ -1,0 +1,2 @@
+[run]
+omit = lettings_site/migrations/*,lettings/tests/*,lettings/migrations/*, profiles/migrations/*
