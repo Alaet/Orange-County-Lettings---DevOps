@@ -12,6 +12,8 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - heroku/install
+      - heroku/check-authentication
       - docker/install-docker
       - docker/check:
           docker-username: DOCKER_LOGIN 
