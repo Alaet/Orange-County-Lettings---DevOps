@@ -33,7 +33,10 @@ jobs:
       - heroku/install
       - docker/install-docker-tools
       - docker/pull:
-          images: alaet/testimg 
+          images: alaet/testimg
+      - docker/check:
+          docker-username: DOCKER_LOGIN 
+          docker-password: DOCKER_PASSWORD 
       - run:
           name: Run tests
           command: pytest
