@@ -30,15 +30,15 @@ jobs:
           docker-username: DOCKER_LOGIN 
           docker-password: DOCKER_PASSWORD
       - docker/build:
-          image: alaet/oc-lettings-om/testimg
+          image: alaet/oc-lettings-om
           tag: $CIRCLE_SHA1,latest
       - docker/push:
-          image: alaet/oc-lettings-om/testimg
+          image: alaet/oc-lettings-om
           tag: $CIRCLE_SHA1,latest
       - docker/pull:
-          images: alaet/oc-lettings-om/testimg:latest
+          images: alaet/oc-lettings-om:latest
       - heroku/push-docker-image:
-          recursive: true 
+          process-types: web 
           api-key: HEROKU_API_KEY
 workflows:
   test-lint-build-deploy:
