@@ -16,8 +16,6 @@ jobs:
       - heroku/check-authentication
       - docker/install-docker
       - docker/check:
-          docker-username: DOCKER_LOGIN 
-          docker-password: DOCKER_PASSWORD
           registry: registry.heroku.com/${HEROKU_APP_NAME}/web
       - docker/build:
           registry: registry.heroku.com/${HEROKU_APP_NAME}/web
