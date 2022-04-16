@@ -37,7 +37,13 @@ jobs:
       - docker/install-docker-tools
       - docker/check:
           docker-username: DOCKER_LOGIN 
-          docker-password: DOCKER_PASSWORD 
+          docker-password: DOCKER_PASSWORD
+      - docker/build:
+          image: alaet/testimg
+          tag: $CIRCLE_SHA1,latest
+      - docker/push:
+          image: alaet/testimg
+          tag: $CIRCLE_SHA1,latest
       - docker/pull:
           images: alaet/testimg
       - heroku/push-docker-image:
