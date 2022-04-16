@@ -19,11 +19,11 @@ jobs:
           docker-username: DOCKER_LOGIN 
           docker-password: DOCKER_PASSWORD
       - docker/build:
-          registry: registry.heroku.com/${HEROKU_APP_NAME}/web
+          registry: registry.heroku.com/HEROKU_APP_NAME/web
           image: alaet/oc-lettings-om
           tag: $CIRCLE_SHA1,latest
       - docker/push:
-          registry: registry.heroku.com/${HEROKU_APP_NAME}/web
+          registry: registry.heroku.com/HEROKU_APP_NAME/web
           image: alaet/oc-lettings-om
           tag: $CIRCLE_SHA1,latest
   pull-and-test:
