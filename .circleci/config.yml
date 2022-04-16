@@ -31,8 +31,7 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - heroku/install
-      - docker/install-docker:
-          install-dir: /usr/local/bin
+      - docker/install-docker
       - run:
           name: Run tests
           command: pytest
