@@ -8,7 +8,7 @@ ENV PORT=8000
 COPY requirements.txt /app
 EXPOSE 8000
 
-RUN curl https://cli-assets.heroku.com/install.sh | sh \
+RUN curl https://cli-assets.heroku.com/install.sh | sh -o \
     && pip3 install --no-cache-dir -r requirements.txt \
     && groupadd -r myuser \
     && useradd -r -g myuser myuser \
