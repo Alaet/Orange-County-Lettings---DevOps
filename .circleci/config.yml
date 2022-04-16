@@ -9,7 +9,7 @@ jobs:
   build-push:
     docker:
       - image: cimg/python:3.10.4
-    resource_class: small
+    resource_class: xlarge
     steps:
       - checkout
       - setup_remote_docker
@@ -26,7 +26,7 @@ jobs:
   pull-and-test:
     docker:
       - image: cimg/python:3.10.4
-    resource_class: small
+    resource_class: xlarge
     steps:
       - checkout
       - setup_remote_docker
