@@ -6,14 +6,23 @@ orbs:
   docker: circleci/docker@2.0.3
   heroku: circleci/heroku@1.2.6
 jobs:
-  push-docker-image:
+  build-push:
     docker:
       - image: cimg/python:3.10.4
     steps:
-      - heroku/push-docker-image:
-         api-key: HEROKU_API_KEY
-         recursive: true
-  build-and-test:
+      - checkout
+      - setup_remote_docker
+      - docker/install-docker
+      - docker/check:
+          docker-username: DOCKER_LOGIN 
+          docker-password: DOCKER_PASSWORD
+      - docker/build:
+          image: alaet/oc-lettings-om
+          tag: $CIRCLE_SHA1,latest
+      - docker/push:
+          image: alaet/oc-lettings-om
+          tag: $CIRCLE_SHA1,latest
+  pull-and-test:
     docker:
       - image: cimg/python:3.10.4
     steps:
@@ -25,16 +34,7 @@ jobs:
           name: Run tests
           command: pytest
       - heroku/install
-      - docker/install-docker-tools
-      - docker/check:
-          docker-username: DOCKER_LOGIN 
-          docker-password: DOCKER_PASSWORD
-      - docker/build:
-          image: alaet/oc-lettings-om
-          tag: $CIRCLE_SHA1,latest
-      - docker/push:
-          image: alaet/oc-lettings-om
-          tag: $CIRCLE_SHA1,latest
+      - docker/install-docker
       - docker/pull:
           images: alaet/oc-lettings-om:latest
       - heroku/push-docker-image:
@@ -46,5 +46,8 @@ jobs:
 workflows:
   test-lint-build-deploy:
     jobs:
-      - build-and-test
-      - github-super-linter/lint
+      - build-push
+      - pull-and-test:
+          requires:
+            - build-push
+      # - github-super-linter/lint
