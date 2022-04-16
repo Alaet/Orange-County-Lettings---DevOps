@@ -11,12 +11,17 @@ orbs:
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
   python: circleci/python@2.0.3
   github-super-linter: circleci/github-super-linter@1.0.1
-  docker: circleci/docker@1.7.0
+  docker: circleci/docker@2.0.3
   heroku: circleci/heroku@1.2.6
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+  install-docker:
+    docker: 
+      - image: cimg/python:3.10.2
+    steps:
+      - docker/install-docker-tools
   install-heroku:
     docker: 
       - image: cimg/python:3.10.2
@@ -52,6 +57,7 @@ workflows:
   test-lint-build-deploy: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
+      - install-docker
       - build-and-test
       - github-super-linter/lint:
           requires:
@@ -66,5 +72,6 @@ workflows:
       - install-heroku
       - heroku/push-docker-image:
           requires:
+              - install-docker
               - install-heroku
               - docker/publish
