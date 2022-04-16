@@ -36,9 +36,10 @@ jobs:
           image: alaet/testimg
           tag: $CIRCLE_SHA1,latest
       - docker/pull:
-          images: alaet/testimg
+          images: alaet/testimg:latest
       - heroku/push-docker-image:
-         api-key: HEROKU_API_KEY
+          recursive: true 
+          api-key: HEROKU_API_KEY
 workflows:
   test-lint-build-deploy:
     jobs:
