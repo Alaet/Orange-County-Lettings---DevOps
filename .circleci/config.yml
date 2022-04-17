@@ -18,6 +18,7 @@ jobs:
       - docker/install-docker
       - docker/check
       - docker/build:
+          extra_build_args: SECRET_KEY=${SECRET_KEY}
           image: alaet/oc-lettings-om
           tag: $CIRCLE_SHA1,latest
       - docker/push:
