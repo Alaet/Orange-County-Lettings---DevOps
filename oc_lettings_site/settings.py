@@ -1,7 +1,8 @@
 import os
-import environ
-import django_heroku
 from typing import List
+
+import django_heroku
+import environ
 
 # Initialize environment variables
 env = environ.Env()
@@ -15,16 +16,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', False)
+DEBUG = env.bool("DEBUG", False)
 
 ALLOWED_HOSTS: List[str] = []
 ALLOWED_HOSTS.extend(
     filter(
         None,
-        env('ALLOWED_HOSTS').split(','),
+        env("ALLOWED_HOSTS").split(","),
     )
 )
 
@@ -120,7 +121,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = 'staticfiles/'
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = "staticfiles/"
+STATIC_URL = "/static/"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 django_heroku.settings(locals())
