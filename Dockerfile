@@ -7,18 +7,16 @@ USER root
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV PORT=8000
-COPY requirements.txt .
-EXPOSE 8000
+COPY . .
 
 RUN pip3 install --no-cache-dir -r requirements.txt \
+    && python3 manage.py collectstatic \
     && groupadd -r myuser \
     && useradd -r -g myuser myuser \
     && rm -r -f /var/lib/apt/lists/*
 
-COPY . .
+EXPOSE 8000
 
-ENTRYPOINT ["python3", "collectstatic"]
-
-CMD ["manage.py", "runserver", "0.0.0.0:$PORT"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:$PORT"]
 
 USER myuser
