@@ -20,8 +20,13 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', False)
 
-ALLOWED_HOSTS: List[str] = env.list('ALLOWED_HOSTS')
-
+ALLOWED_HOSTS: List[str] = []
+ALLOWED_HOSTS.extend(
+    filter(
+        None,
+        env('ALLOWED_HOSTS').split(','),
+    )
+)
 
 # Application definition
 
