@@ -6,6 +6,18 @@ orbs:
   docker: circleci/docker@2.0.3
   heroku: circleci/heroku@1.2.6
 jobs:
+  test:
+    docker:
+      - image: cimg/python:3.10.4
+    resource_class: large
+    steps:
+      - checkout
+      - setup_remote_docker
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run tests
+          command: pytest
   build-push:
     docker:
       - image: cimg/python:3.10.4
@@ -24,18 +36,13 @@ jobs:
       - docker/push:
           image: alaet/oc-lettings-om
           tag: $CIRCLE_SHA1,latest
-  pull-and-test:
+  pull-and-deploy:
     docker:
       - image: cimg/python:3.10.4
     resource_class: large
     steps:
       - checkout
       - setup_remote_docker
-      - python/install-packages:
-          pkg-manager: pip
-      - run:
-          name: Run tests
-          command: pytest
       - heroku/install
       - docker/install-docker
       - docker/pull:
@@ -49,8 +56,14 @@ jobs:
 workflows:
   test-lint-build-deploy:
     jobs:
-      - build-push
-      - pull-and-test:
+      - github-super-linter/lint
+      - test:
+          requires:
+            - github-super-linter/lint
+      - build-push:
+          requires:
+            - test
+      - pull-and-deploy:
           requires:
             - build-push
-      - github-super-linter/lint
+      
