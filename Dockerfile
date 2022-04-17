@@ -6,6 +6,7 @@ USER root
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV DEBUG=False
 ENV PORT=8000
 COPY . .
 
@@ -17,6 +18,6 @@ RUN pip3 install --no-cache-dir -r requirements.txt \
 
 EXPOSE 8000
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:$PORT"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
 
 USER myuser
