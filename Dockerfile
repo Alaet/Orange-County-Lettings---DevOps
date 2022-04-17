@@ -17,8 +17,6 @@ RUN pip3 install --no-cache-dir -r requirements.txt \
 
 COPY . .
 
-ENTRYPOINT ["python3"]
-
-CMD ["manage.py", "runsever", "0.0.0.0:$PORT"]
+ENTRYPOINT ["python3", "manage.py", "runsever", "0.0.0.0:$PORT"]
 
 USER myuser
