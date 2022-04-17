@@ -30,11 +30,11 @@ jobs:
       - docker/install-docker
       - docker/check
       - docker/build:
-          image: alaet/oc-lettings-om
+          image: ${DOCKER_LOGIN}/${HEROKU_APP_NAME}
           tag: $CIRCLE_SHA1,latest
           extra_build_args: --build-arg SECRET_KEY=${SECRET_KEY} --build-arg ALLOWED_HOSTS=${ALLOWED_HOSTS} --build-arg DEBUG=${DEBUG}
       - docker/push:
-          image: alaet/oc-lettings-om
+          image: ${DOCKER_LOGIN}/${HEROKU_APP_NAME}
           tag: $CIRCLE_SHA1,latest
   pull-and-deploy:
     docker:
@@ -46,9 +46,9 @@ jobs:
       - heroku/install
       - docker/install-docker
       - docker/pull:
-          images: alaet/oc-lettings-om:${CIRCLE_SHA1}
+          images: ${DOCKER_LOGIN}/${HEROKU_APP_NAME}:${CIRCLE_SHA1}
       - run : heroku container:login
-      - run: docker tag alaet/oc-lettings-om:${CIRCLE_SHA1} registry.heroku.com/${HEROKU_APP_NAME}/web
+      - run: docker tag ${DOCKER_LOGIN}/${HEROKU_APP_NAME}:${CIRCLE_SHA1} registry.heroku.com/${HEROKU_APP_NAME}/web
       - run: docker push registry.heroku.com/${HEROKU_APP_NAME}/web
       - heroku/release-docker-image:
           process-types: web 
