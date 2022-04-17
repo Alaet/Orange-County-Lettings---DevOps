@@ -53,4 +53,4 @@ workflows:
       - pull-and-test:
           requires:
             - build-push
-      # - github-super-linter/lint
+      - github-super-linter/lint
