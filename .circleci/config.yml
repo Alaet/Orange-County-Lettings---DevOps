@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Run tests
           command: pytest
-  build-push:
+  docker-build-push:
     docker:
       - image: cimg/python:3.10.4
     resource_class: large
@@ -34,7 +34,7 @@ jobs:
       - docker/push:
           image: ${DOCKER_LOGIN}/${HEROKU_APP_NAME}
           tag: $CIRCLE_SHA1,latest
-  pull-and-deploy:
+  heroku-pull-deploy:
     docker:
       - image: cimg/python:3.10.4
     resource_class: large
@@ -54,14 +54,14 @@ jobs:
 workflows:
   test-lint-build-deploy:
     jobs:
-      - github-super-linter/lint
-      - test:
-          requires:
-            - github-super-linter/lint
-      - build-push:
+      - test
+      - github-super-linter/lint:
           requires:
             - test
-      - pull-and-deploy:
+      - docker-build-push:
           requires:
-            - build-push
+            - github-super-linter/lint
+      - heroku-pull-deploy:
+          requires:
+            - docker-build-push
       
