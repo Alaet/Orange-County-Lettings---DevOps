@@ -30,7 +30,7 @@ jobs:
       - docker/build:
           image: ${DOCKER_LOGIN}/${HEROKU_APP_NAME}
           tag: $CIRCLE_SHA1,latest
-          extra_build_args: --build-arg SECRET_KEY=${SECRET_KEY} --build-arg ALLOWED_HOSTS=${ALLOWED_HOSTS} --build-arg DEBUG=${DEBUG}
+          extra_build_args: --build-arg SECRET_KEY=${SECRET_KEY} --build-arg ALLOWED_HOSTS=${ALLOWED_HOSTS} --build-arg DEBUG=${DEBUG} --build-arg SENTRY_DSN=${SENTRY_DSN}
       - docker/push:
           image: ${DOCKER_LOGIN}/${HEROKU_APP_NAME}
           tag: $CIRCLE_SHA1,latest
