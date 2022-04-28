@@ -60,17 +60,17 @@ workflows:
             - test
           filters:
             branches:
-              only: main
+              only: master
       - docker-build-push:
           requires:
             - github-super-linter/lint
           filters:
             branches:
-              only: main
+              only: master
       - heroku-pull-deploy:
           requires:
             - docker-build-push
           filters:
             branches:
-              only: main
+              only: master
       
