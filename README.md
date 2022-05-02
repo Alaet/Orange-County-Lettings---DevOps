@@ -1,5 +1,5 @@
 # Résumé
-[![CircleCI](https://circleci.com/gh/Alaet/P13_New/tree/main.svg?style=svg&circle-token=a3a14bd4c4c474be0730e598030ffd5f3feb60a7)](https://circleci.com/gh/Alaet/P13_New/tree/main)
+[![CircleCI](https://circleci.com/gh/Alaet/P13_oliva_maximilien/tree/master.svg?style=svg)](https://circleci.com/gh/Alaet/P13_oliva_maximilien/tree/master)
 
 Site web d'Orange County Lettings
 
