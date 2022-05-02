@@ -48,7 +48,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - `source venv/bin/activate`
 - `flake8`
 
-Un linting via le github-super-linter ([Super-Linter github](https://github.com/github/super-linter)) s'effectue 
+Un linting via le github-super-linter ([Super-Linter GitHub](https://github.com/github/super-linter)) s'effectue
 lors de chaque commit sur la branche principale du projet (master).
 
 #### Tests unitaires
@@ -85,7 +85,7 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 Il est nécessaire de configurer des variables d'environnements pour utiliser le projet localement sur votre machine.
 
-Les variables nécessaires au déploiement sont à renseigner 
+Les variables nécessaires au déploiement sont à renseigner
 en variables d'environnement sur [CircleCI](https://circleci.com/docs/2.0/env-vars/).
 
 Vous trouverez à la racine un fichier .env, sont à renseigner :
@@ -106,14 +106,14 @@ Et en enlevant le commentaire de la ligne en dessous pour exécuter les variable
 
 `environ.Env.read_env(env.str('.', '.env'), overwrite=True)`
 
-À partir de là, il est possible d'utiliser docker pour créer une image [Docker](https://docs.docker.com/) locale sur 
+À partir de là, il est possible d'utiliser docker pour créer une image [Docker](https://docs.docker.com/) locale sur
 votre machine.
 
 ## Déploiement
 
 ### Fonctionnement du déploiement
 
-Le déploiement de l'application OC-lettings se fait via un pipeline CI/CD sur CircleCI qui exécute l'application, 
+Le déploiement de l'application OC-lettings se fait via un pipeline CI/CD sur CircleCI qui exécute l'application,
 l'englobe dans un container Docker qui est ensuite déployé sur Heroku.
 
 ### Configuration requise au déploiement
@@ -124,25 +124,25 @@ l'englobe dans un container Docker qui est ensuite déployé sur Heroku.
 
 Installez Docker sur votre poste en suivant les instructions au lien ci-dessous :
 
-https://docs.docker.com/get-docker/
+[https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 
-*  #### Installation d'Heroku
+* #### Installation d'Heroku
 
 Installez Heroku sur votre poste en suivant les instructions au lien ci-dessous :
 
-https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
+[https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli)
 
 * #### Compte CircleCI
 
-Il est nécessaire de se connecter sur le site CircleCi à l'adresse suivante afin de pouvoir surveiller la 
+Il est nécessaire de se connecter sur le site CircleCi à l'adresse suivante afin de pouvoir surveiller la
 progression du pipeline CI/CD et y apporter des modifications si nécessaire :
 
-Si votre compte CircleCi n'est pas lié à votre compte GitHub, allez dans *User Settings* à l'adresse ci-dessous et 
+Si votre compte CircleCi n'est pas lié à votre compte GitHub, allez dans *User Settings* à l'adresse ci-dessous et
 cliquez sur le bouton *Connect* de l'onglet GitHub :
 
-https://app.circleci.com/settings/user
+[https://app.circleci.com/settings/user](https://app.circleci.com/settings/user)
 
-Les variables d'environnement de votre projet CircleCI sont paramétrables dans *Project Settings* -> *Environment 
+Les variables d'environnement de votre projet CircleCI sont paramétrables dans *Project Settings* -> *Environment
 Variables* et sont les suivantes :
 
 **SECRET_KEY** = Votre clé secrète Django.  
@@ -158,13 +158,13 @@ Variables* et sont les suivantes :
 
 Si vous ne disposez pas d'un compte Docker Hub, inscrivez-vous à l'adresse suivante:
 
-https://hub.docker.com/signup
+[https://hub.docker.com/signup](https://hub.docker.com/signup)
 
 * #### Compte Heroku
 
 Si vous ne disposez pas d'un compte Heroku, inscrivez-vous à l'adresse suivante :
 
-https://signup.heroku.com/
+[https://signup.heroku.com/](https://signup.heroku.com/)
 
 Récupérez votre clé API en allant dans les paramètres de votre compte utilisateur Heroku -> *Account settings* puis *API key*.
 
@@ -172,7 +172,7 @@ Récupérez votre clé API en allant dans les paramètres de votre compte utilis
 
 Si vous ne disposez pas d'un compte Sentry, inscrivez-vous à l'adresse suivante :
 
-https://sentry.io/signup/
+[https://sentry.io/signup/](https://sentry.io/signup/)
 
 Une fois votre projet créé, cliquez sur *Settings*, *Projects*, sélectionnez-le, puis dans la rubrique *SDK Setup*,
 cliquez sur *Client Keys (DSN)* et récupérez votre DSN à renseigner dans les variables d'environnement.  
@@ -191,12 +191,12 @@ En cas de succès, l'étape de linting est alors lancée.
 
 Si le linting échoue, les prochaines étapes ne sont pas effectuées.
 
-En cas de succès, un container Docker englobant l'application est créé conformément à l'image Docker et aux 
+En cas de succès, un container Docker englobant l'application est créé conformément à l'image Docker et aux
 directives présentes dans le fichier Dockerfile du projet.
 
 Si la conteneurisation échoue, la prochaine et dernière étape n'est pas effectuée.
 
-En cas de succès, le conteneur englobant l'application est déployé sur Heroku et la nouvelle version de celle-ci 
+En cas de succès, le conteneur englobant l'application est déployé sur Heroku et la nouvelle version de celle-ci
 est disponible à l'adresse ci-dessous :
 
 oc-lettings-om.herokuapp.com
