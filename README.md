@@ -150,7 +150,7 @@ Variables* et sont les suivantes :
 **DOCKER_LOGIN** = Le login de votre compte Docker Hub sur lequel l'image de l'application est envoyée.  
 **DOCKER_PASSWORD** = Le mot de passe de votre compte Docker Hub sur lequel l'image de l'application est envoyée.  
 **HEROKU_API_KEY** = La clé API de votre compte Heroku sur lequel l'application est déployée.  
-**HEROKU_APP_NAME** = Le nom de votre application Heroku.  
+**HEROKU_APP_NAME** = Le nom de votrre application Heroku.  
 **SENTRY_DSN** = Le DSN Sentry de votre application.  
 **DEBUG** = False
 
