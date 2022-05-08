@@ -12,7 +12,7 @@ Site web d'Orange County Lettings
 - SQLite3 CLI
 - Interpréteur Python, version 3.6 ou supérieure
 
-Dans test le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS 
+Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS 
 shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
 
 ### macOS / Linux
